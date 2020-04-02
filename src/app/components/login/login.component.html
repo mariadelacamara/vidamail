@@ -1,0 +1,47 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card>
+      <div class="login-container">
+        <div class="title">
+          <img class="logo" src="../../../assets/logo_vidatec_small.png" alt="logo">
+          <h1 class="text">Login</h1>
+        </div>
+        <form class="form" #form="ngForm" (ngSubmit)="checkLogin()">
+          <div class="input form-control-group">
+            <label class="text labeltext" for="mail">Email:</label>
+            <nb-form-field class="full-width">
+              <nb-icon nbPrefix icon="at-outline" pack="eva"></nb-icon>
+              <input nbInput type="text" id="mail" name="mail" #mail='ngModel' [(ngModel)]="user.mail"
+                (keydown.space)="$event.preventDefault();" fullWidth pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                placeholder="Inserte su mail" required>
+            </nb-form-field>
+          </div>
+          <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="alert alert-danger">
+            <nb-alert class="alert" status="danger" *ngIf="mail.errors.required">
+              Email requerido.
+            </nb-alert>
+            <nb-alert class="alert" status="danger" *ngIf="mail.errors.pattern">
+              Formato de mail invalido.
+            </nb-alert>
+          </div>
+          <div class="input form-control-group">
+            <label class="text labeltext" for="pass">Password:</label>
+            <nb-form-field class="full-width">
+              <input nbInput [type]="getInputType()" id="pass" name="pass" (keydown.space)="$event.preventDefault();"
+                #pass='ngModel' [(ngModel)]="user.pass" minlength="4" fullWidth placeholder="Inserte su password" required>
+              <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                <nb-icon [icon]="showPass ? 'eye-outline' : 'eye-off-2-outline'" pack="eva"></nb-icon>
+              </button>
+            </nb-form-field>
+          </div>
+          <button nbButton type="submit" outline status="primary" class="button" [disabled]="!form.valid">
+            Log In
+          </button>
+        </form>
+        <nb-alert accent="danger" *ngIf="loginError">
+          Usuario o contraseña errónea. Por favor intente nuevamente
+        </nb-alert>
+      </div>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

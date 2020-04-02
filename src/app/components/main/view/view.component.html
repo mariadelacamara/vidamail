@@ -1,0 +1,43 @@
+<form class="view-container full-height" #form="ngForm" (ngSubmit)="sendMail()">
+  <div class="input">
+    <span *ngIf="compose || mail.from" class="main mr-10">From: </span>
+    <span *ngIf="view && mail.from" class="content">{{mail.from}}</span>
+    <span *ngIf="compose">{{userLogged}}</span>
+  </div>
+  <div class="input form-control-group">
+    <label for="to" *ngIf="compose || mail.to" class="main mr-10">To: </label>
+    <span *ngIf="view && mail.to" class="content">{{mail.to}}</span>
+    <input *ngIf="compose" 
+      type="text" id="to" 
+      name="to" #to='ngModel' 
+      [(ngModel)]="sentMail.to" 
+      class="full-width"
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+      required />
+  </div>
+  <div class="input form-control-group">
+    <label for="subject" class="main mr-10">Subject:</label>
+    <span *ngIf="view && mail.subject" class="content">{{mail.subject}}</span>
+    <input *ngIf="compose" 
+      type="text" 
+      id="subject" 
+      name="subject" 
+      #subject='ngModel' 
+      [(ngModel)]="sentMail.subject"
+      class="full-width" />
+  </div>
+  <div class="input form-control-group">
+    <p *ngIf="view && mail.body" class="body">{{mail.body}}</p>
+    <textarea *ngIf="compose" 
+      type="text" 
+      id="body" 
+      name="body" 
+      #body='ngModel' 
+      [(ngModel)]="sentMail.body"
+      class="body full-width" 
+      rows=8
+      required>
+    </textarea>
+  </div>
+  <button type="submit" [disabled]="!form.valid" class="send-button" *ngIf="compose">Send</button>
+</form>

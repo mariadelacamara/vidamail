@@ -24,6 +24,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@nebular/theme/styles/prebuilt/default.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "vida-mail"
+    }
+  },
+  "defaultProject": "vida-mail",
+  "cli": {
+    "analytics": "37f18db7-42f0-4868-ab13-30f82fc86751"
+  }
 }

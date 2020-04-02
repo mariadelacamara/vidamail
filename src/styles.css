@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  nb-layout-column {
+    margin: auto;
+  }
+
+  .full-height {
+    height: 100%;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+  
+  .mr-10 {
+    margin-right: 10px;
+  }
+
+  .mr-20 {
+    margin-right: 20px;
+  }
+
+  /* Reset CSS */
+
+  button {
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  label {
+    margin-bottom: 0;
+  }

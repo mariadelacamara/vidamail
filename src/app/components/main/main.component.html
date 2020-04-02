@@ -1,0 +1,61 @@
+<div class="inbox-container full-width">
+  <div class="header full-width">
+    <div class="header-title">
+      <img src="../../../assets/user.svg" class="icon mr-10" alt="mail" />
+      <span>VIDA MAIL</span>
+    </div>
+    <span class="welcome">Bienvenid@ {{userLoggedMail}}!</span>
+    <button class="button-logout" (click)=logout()>Logout</button>
+  </div>
+  <div class="inbox-section">
+    <div class="sidebar">
+      <button class="section-button" type="button" (click)="showInboxMails()">
+        <img src="../../../assets/inbox.svg" alt="inbox" class="icon-buttons mr-10">
+        Inbox
+      </button>
+      <button class="section-button" type="button" (click)="showSentMails()">
+        <img src="../../../assets/sent.svg" alt="sent" class="icon-buttons mr-10">
+        Sent
+      </button>
+      <button class="section-button" type="button" (click)="goToCompose()">
+        <img src="../../../assets/compose.svg" alt="sent" class="icon-buttons mr-10">
+        Compose
+      </button>
+    </div>
+    <div class="mails">
+      <div *ngIf="!showView && !showCompose">
+        <div class="tabs hide-responsive">
+          <button class="tab mr-20" [ngClass]="{'current-tab': showInbox}" (click)="showInboxMails()">Inbox</button>
+          <button class="tab" [ngClass]="{'current-tab': !showInbox}" (click)="showSentMails()">Sent</button>
+        </div>
+        <div class="scroll" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+          (scrolled)="showInbox ? onScrollInbox() : onScrollSent()">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search mail by subject"
+              [(ngModel)]="searchParameter" />
+          </div>
+          <button (click)="showMail(mail)"
+            *ngFor="let mail of (showInbox ? mailsShowed : sentMails) | mailFilter:searchParameter" type="button"
+            class="mail">
+            <span class="subject">{{mail.subject}}</span>
+            <div class="content">
+              <span class="from" *ngIf="showInbox">From: {{mail.from}}</span>
+              <span class="from" *ngIf="!showInbox">To: {{mail.to}}</span>
+              <span>{{mail.body}}</span>
+            </div>
+          </button>
+          <div *ngIf="endOfMails" class="end">
+            <span>No hay mas mails</span>
+            <button class="end-button" (click)="scrollToTop()">
+              <img src="../../../assets/arrow.png" alt="arrow" class="icon mr-10" />
+              Volver al inicio
+            </button>
+          </div>
+        </div>
+      </div>
+      <app-view [idMail]="nextSend" [userLogged]="userLoggedMail" [mail]="currentMail" [view]="showView"
+        [compose]="showCompose" *ngIf="showView || showCompose" (addMail)="sendMail($event)">
+      </app-view>
+    </div>
+  </div>
+</div>

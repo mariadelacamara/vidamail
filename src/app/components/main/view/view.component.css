@@ -1,0 +1,40 @@
+.view-container {
+  padding: 30px;
+}
+
+.main {
+  font-weight: bold;
+}
+
+.content {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.body {
+  border: 1px solid #555555;
+  border-radius: 10px;
+  margin-top: 30px;  
+  padding: 20px;
+  width: 100%;
+}
+
+.input {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.send-button {
+  background-color: #c4aead;  
+  border: 1px solid #4a4e4d;
+  border-radius: 10px;
+  float: right;
+  padding: 10px 20px;
+  outline: none;
+}
+
+.send-button:hover {
+  filter: brightness(120%);
+}
