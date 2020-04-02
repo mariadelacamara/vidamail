@@ -39,9 +39,9 @@ export class MainComponent implements OnInit {
      this.router.navigate(['login'])
    }
    this.mailService.getInboxMails().subscribe(data => this.inboxMails = data.reverse());
-   this.mailService.getInboxMails().subscribe(data => this.mailsShowed = data.reverse().slice(0, 10));
+   this.mailService.getInboxMails().subscribe(data => this.mailsShowed = data.reverse().slice(0, 20));
    this.mailService.getSentMails().subscribe(data => this.sentMails = data.reverse());
-   this.mailService.getSentMails().subscribe(data => this.sentShowed = data.reverse().slice(0, 10));
+   this.mailService.getSentMails().subscribe(data => this.sentShowed = data.reverse().slice(0, 20));
   }
 
   showInboxMails() {
@@ -58,16 +58,18 @@ export class MainComponent implements OnInit {
 
   onScrollInbox() {
     const lastPostId = this.mailsShowed[this.mailsShowed.length - 1].id;
-    if (lastPostId && this.mailsShowed.length < this.inboxMails.length) {
-    this.mailsShowed = [...this.mailsShowed, ...this.inboxMails.slice(lastPostId, lastPostId + 10)];
-  }
+    const lastPost = this.inboxMails.map(e => e.id).indexOf(lastPostId);
+    if (this.mailsShowed.length < this.inboxMails.length) {
+      this.mailsShowed = [...this.mailsShowed, ...this.inboxMails.slice(lastPost, lastPost + 20)];
+    }
     this.endOfMails = true
   }
 
   onScrollSent() {
     const lastPostId = this.sentShowed[this.sentShowed.length - 1].id;
+    const lastPost = this.sentMails.map(e => e.id).indexOf(lastPostId);
     if (lastPostId && this.sentShowed.length <= this.sentMails.length) {
-      this.sentShowed = this.sentShowed.concat(this.sentMails.slice(lastPostId, lastPostId + 10));
+      this.sentShowed = this.sentShowed.concat(this.sentMails.slice(lastPost, lastPost + 20));
     }
     this.endOfMails = true;
   }
