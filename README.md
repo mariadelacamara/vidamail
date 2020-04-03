@@ -1,4 +1,31 @@
+# Initial configurations
+
+If you dont have npm installed, please do. 
+
+If you dont have angular installed, you have to run
+
+npm install -g @angular/cli
+
+Then you run npm install and npm start and you can see the project in localhost/4200. 
+
 # VidaMail
+
+In the login page you need to login by using this mail and pass combination:
+
+- user@vi-datec.com
+- test
+
+Any other combinations will be rejected. 
+
+In the main page you will find a mocked list of received mails reading of json file showed in descending order. 
+
+If you change to sent tab, you will find a mocked list of  sent mails reading of json file showed in descending order. 
+
+If you click on Compose, and then you click on Send button, this mail will be attached to sent mails and you will find this at the top of sent mails list. 
+
+You cand search mails by subject by typing any character in the search bar at the top of Inbox / Sent tabs. 
+
+If you arent logged, any attempt to access to any page, will be redirected to login page. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
