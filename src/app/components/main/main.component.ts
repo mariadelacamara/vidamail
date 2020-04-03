@@ -68,8 +68,8 @@ export class MainComponent implements OnInit {
   onScrollSent() {
     const lastPostId = this.sentShowed[this.sentShowed.length - 1].id;
     const lastPost = this.sentMails.map(e => e.id).indexOf(lastPostId);
-    if (lastPostId && this.sentShowed.length <= this.sentMails.length) {
-      this.sentShowed = this.sentShowed.concat(this.sentMails.slice(lastPost, lastPost + 20));
+    if (this.sentShowed.length <= this.sentMails.length) {
+      this.sentShowed = [...this.sentShowed, ...this.sentMails.slice(lastPost, lastPost + 20)];
     }
     this.endOfMails = true;
   }
