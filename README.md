@@ -6,7 +6,9 @@ If you dont have angular installed, you have to run
 
 npm install -g @angular/cli
 
-Then you run npm install and npm start and you can see the project in localhost/4200. 
+Then you run npm install and then npm start and you can see the project in 
+
+localhost/4200. 
 
 # VidaMail
 
@@ -17,15 +19,15 @@ In the login page you need to login by using this mail and pass combination:
 
 Any other combinations will be rejected. 
 
-In the main page you will find a mocked list of received mails reading of json file showed in descending order. 
+In the main page you will find a mocked list of received mails reading from a json file, showed in descending order. 
 
-If you change to sent tab, you will find a mocked list of  sent mails reading of json file showed in descending order. 
+If you change to sent tab, you will find a mocked list of  sent mails reading from a json file, showed in descending order. 
 
-If you click on Compose, and then you click on Send button, this mail will be attached to sent mails and you will find this at the top of sent mails list. 
+If you click on Compose, and then you click on Send button, this mail will be attached to sent mails list and you will find this at the top of sent mails tab. 
 
-You cand search mails by subject by typing any character in the search bar at the top of Inbox / Sent tabs. 
+You can search mails by subject by typing any character in the search bar at the top of Inbox / Sent tabs. 
 
-If you arent logged, any attempt to access to any page, will be redirected to login page. 
+If you arent logged, any attempt to access to any route, will redirect you to login page. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
